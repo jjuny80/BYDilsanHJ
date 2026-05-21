@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <!-- 모바일 최적화: 최대 스케일 고정, 사용자 확대 비허용 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+  <title>최호준 | BYD 일산전시장</title>
+
+  <!-- SNS 공유 시 미리보기 메타 정보 (Open Graph) -->
+  <meta property="og:type"        content="profile" />
+  <meta property="og:title"       content="최호준 과장 | BYD Ilsan" />
+  <meta property="og:description" content="010-9037-8699" />
+  <meta property="og:image"       content="https://raw.githubusercontent.com/bydilsanmy/BYDIlsanMY/main/BYD-PMY-namecard.jpg" />
+  <meta property="og:image:width"  content="1024" />
+  <meta property="og:image:height" content="595" />
+  <meta property="og:image:alt"    content="최호준 과장 명함 | BYD 일산전시장" />
+  <!-- 브라우저 상단 주소창 색상 (Android Chrome 등) -->
+  <meta name="theme-color" content="#3753B1" />
+
+  <!-- 폰트 프리커넥트: 렌더링 지연 최소화 -->
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+  <!-- 한글 폰트: Pretendard (CDN), 영문 보조: Source Sans Pro -->
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- Material Icons Outlined: maps_home_work·textsms·save 아이콘 사용 -->
+  <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet" />
+
+  <style>
+    /* ── 전역 초기화 ── */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent; /* 모바일 터치 시 파란 하이라이트 제거 */
+    }
+
+    /* ── 디자인 토큰(CSS 변수) ── 색상·배경을 한 곳에서 관리 */
+    :root {
+      --card-bg:    #e2e3e5; /* 명함 카드 배경 */
+      --text-main:  #4e5356; /* 기본 텍스트 */
+      --text-mute:  #7a8080; /* 보조 텍스트 */
+      --accent-deep: #3753b1; /* 메인 강조색 (BYD 블루) */
+      --accent-light:#4f9edd; /* 보조 강조색 (하늘색) */
+      --paper:      #efefef;
+      --btn-bg:     #e2e3e5; /* 섹션·버튼 배경 */
+      --paper-soft: #f8f9fa; /* 페이지 배경 */
+    }
+
+    html, body {
+      background: var(--paper-soft);
+    }
+
+    body {
+      /* 한글 우선, 시스템 폰트 폴백 순 */
+      font-family: "Source Sans Pro", "Pretendard", -apple-system, sans-serif;
+      color: var(--text-main);
+      min-height: 100vh;
+      padding: 14px 14px 60px; /* 하단 패딩: 플로팅 버튼 가림 방지 */
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased; /* macOS/iOS 폰트 안티앨리어싱 */
+    }
+
+    /* ── 레이아웃 컨테이너 ── 최대 너비 480px, 중앙 정렬 */
+    .container {
+      max-width: 480px;
+      margin: 0 auto;
+    }
+
+    /* ── 명함 카드 ── */
+    .business-card {
+      position: relative;
+      background: var(--card-bg);
+      aspect-ratio: 1.72 / 1; /* 실물 명함 비율 */
+      width: 100%;
+      border-radius: 14px;
+      box-shadow:
+        0 26px 40px -12px rgba(0,0,0,0.22),
+        0 12px 18px -6px  rgba(0,0,0,0.14),
+        0 1px 0 0 rgba(255,255,255,0.6) inset; /* 상단 하이라이트 */
+      overflow: hidden;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0,0,0,0.05);
+      animation: cardIn 0.7s cubic-bezier(0.2,0.8,0.2,1) both; /* 입장 애니메이션 */
+    }
+
+    /* 카드 입장 애니메이션: 아래에서 살짝 올라오며 페이드인 */
+    @keyframes cardIn {
+      from { opacity: 0; transform: translateY(12px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0)    scale(1);    }
+    }
+
+    /* 카드 하단 블루 그라데이션 바 */
+    .business-card::before {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--accent-deep), var(--accent-light));
+      pointer-events: none;
+    }
+
+    /* BYD 로고: 우상단 고정 */
+    .brand-logo-area {
+      position: absolute;
+      top: 12%; right: 6%;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .byd-logo-img {
+      width: clamp(95px, 22vw, 125px); /* 반응형 로고 크기 */
+      height: auto;
+      display: block;
+      opacity: 0.9;
+    }
+
+    /* 명함 텍스트 영역: 좌하단 고정 */
+    .card-content {
+      position: absolute;
+      left: 6%; right: 6%; bottom: 11%;
+      z-index: 2;
+    }
+
+    /* 이름 줄: clamp로 화면 너비에 따라 자동 조정 */
+    .name-line {
+      font-weight: 700;
+      font-size: clamp(20px, 4.8vw, 26px);
+      margin-bottom: 5px;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+      display: flex;
+      align-items: baseline;
+      gap: 6px;
+    }
+
+    /* 직책 뱃지 (이름 옆 소형 텍스트) */
+    .name-line span.title {
+      font-size: 0.52em;
+      font-weight: 600;
+      color: var(--text-mute);
+    }
+
+    /* 명함 내 보조 정보 줄 (직책·이메일·주소 등) 공통 스타일 */
+    .sub-title-line,
+    .showroom-line,
+    .info-line {
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: 400;
+      font-size: clamp(13px, 2.9vw, 15.6px);
+      color: var(--text-mute);
+      margin-bottom: 2.7px;
+      letter-spacing: 0.01em;
+      line-height: 1.28;
+    }
+
+    /* 전화번호 줄: 굵게 강조 */
+    .info-line.phone-bold {
+      font-weight: 800;
+      color: var(--text-main);
+      font-size: clamp(17px, 3vw, 16px);
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+
+    /* ── 섹션 카드 (CONTACT / e-Catalog / SHOWROOM LOCATION) ── */
+    .section {
+      background: var(--btn-bg);
+      border-radius: 16px;
+      padding: 18px 16px;
+      margin-bottom: 14px;
+      border: 1px solid #e2e2e2;
+      box-shadow: 0 10px 20px -6px rgba(0,0,0,0.12);
+    }
+
+    /* 섹션 상단 레이블 */
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-mute);
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+      text-transform: uppercase;
+    }
+
+    /* ── 통화하기 / 연락처 저장 버튼 행 ── */
+    .cta-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* 기본 2열 */
+      gap: 10px;
+      margin-bottom: 14px;
+    }
+
+    /* CTA 버튼 공통: 아이콘 + 텍스트 수평 중앙 정렬 */
+    .cta-button {
+      padding: 15px 12px;
+      border-radius: 12px;
+      border: none;
+      font-family: inherit;
+      font-size: 17px; /* 통화하기·연락처 저장 글씨 크기 */
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform 0.12s ease, background 0.2s ease, box-shadow 0.2s ease;
+      letter-spacing: -0.01em;
+    }
+
+    .cta-button:active {
+      transform: scale(0.97);
+    }
+
+    /* 파란 채움 버튼 (통화하기) */
+    .cta-primary {
+      background: var(--accent-deep);
+      color: #ffffff;
+      box-shadow: 0 10px 22px -4px rgba(55,83,177,0.45);
+    }
+
+    /* 외곽선 버튼 (연락처 저장) */
+    .cta-secondary {
+      background: var(--btn-bg);
+      color: var(--accent-deep);
+      border: 1.5px solid var(--accent-deep);
+      box-shadow: 0 10px 20px -6px rgba(0,0,0,0.15);
+    }
+
+    /* ── 아이콘 그리드 (CONTACT / SHOWROOM 내부 버튼 묶음) ── */
+    .action-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr); /* CONTACT 섹션 기본 4열 */
+      gap: 8px;
+    }
+
+    /* 개별 아이콘 버튼: 세로 중앙 정렬, 흰 카드 */
+    .action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 4px 12px;
+      border-radius: 12px;
+      background: #ffffff;
+      cursor: pointer;
+      transition: transform 0.1s ease, background 0.2s ease;
+      border: none;
+      color: inherit;
+      text-decoration: none;
+      font-family: inherit;
+      box-shadow: 0 4px 10px -2px rgba(0,0,0,0.1);
+    }
+
+    .action-item:active {
+      transform: scale(0.95);
+      background: #edf0f2;
+    }
+
+    /* SVG 아이콘 공통 크기 (CONTACT 그리드 내 SVG) */
+    .action-icon {
+      width: 24px;
+      height: 24px;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    /* 지도 앱(티맵·카카오·네이버) 색상 뱃지 */
+    .action-badge {
+      width: 26px;
+      height: 26px;
+      margin-bottom: 7px;
+      border-radius: 7px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 12px;
+    }
+
+    /* 아이콘 버튼 하단 텍스트 레이블 */
+    .action-label {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-main);
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    /* ── SHOWROOM LOCATION 주소 영역 ── */
+    .map-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 14px;
+      background: #ffffff;
+      border-radius: 12px;
+      margin-top: 4px;
+      box-shadow: 0 4px 10px -2px rgba(0,0,0,0.08);
+    }
+
+    /* 주소 앞 maps_home_work 아이콘 컨테이너 */
+    .map-pin {
+      flex-shrink: 0;
+      width: 38px;
+      height: 38px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* maps_home_work Material Icon: 테두리 없음, 색상 #4e5356 */
+    .map-pin .material-icons-outlined {
+      font-size: 36px;
+      color: #4e5356;
+      line-height: 1;
+    }
+
+    .map-text strong {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 1px; 
+    }
+
+    .map-text span {
+      color: var(--text-mute);
+      font-size: 12px;
+    }
+
+    /* ── 공유 모달 오버레이 ── 바텀시트 방식 */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: none;
+      align-items: flex-end;
+      justify-content: center;
+      z-index: 1100;
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-overlay.show {
+      display: flex;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* 모달 바텀시트 본체 */
+    .modal {
+      background: var(--paper-soft);
+      width: 100%;
+      max-width: 480px;
+      border-radius: 22px 22px 0 0;
+      padding: 22px 20px 28px;
+      animation: slideUp 0.3s cubic-bezier(0.2,0.8,0.2,1);
+    }
+
+    @keyframes slideUp {
+      from { transform: translateY(100%); }
+      to   { transform: translateY(0); }
+    }
+
+    /* 드래그 핸들 바 */
+    .modal-grip {
+      width: 40px;
+      height: 4px;
+      background: #ddd;
+      border-radius: 2px;
+      margin: 0 auto 18px;
+    }
+
+    .modal-title {
+      font-size: 17px;
+      font-weight: 800;
+      margin-bottom: 4px;
+      letter-spacing: -0.02em;
+      color: var(--text-main);
+    }
+
+    .modal-desc {
+      font-size: 13px;
+      color: var(--text-mute);
+      margin-bottom: 18px;
+      letter-spacing: -0.005em;
+      line-height: 1.5;
+    }
+
+    .modal-list {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    /* 각 공유 옵션 행 */
+    .modal-item {
+      padding: 14px;
+      border-radius: 12px;
+      background: #ffffff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+      text-align: left;
+      font-family: inherit;
+      transition: background 0.15s ease;
+      box-shadow: 0 2px 8px -2px rgba(0,0,0,0.07);
+    }
+
+    .modal-item:active { background: #edf0f2; }
+
+    .modal-item-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-item-text { flex: 1; }
+
+    .modal-item-text strong {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 2px;
+      letter-spacing: -0.01em;
+      color: var(--text-main);
+    }
+
+    .modal-item-text span {
+      font-size: 12px;
+      color: var(--text-mute);
+      letter-spacing: -0.005em;
+    }
+
+    .modal-close {
+      width: 100%;
+      margin-top: 14px;
+      padding: 14px;
+      background: transparent;
+      border: none;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--text-mute);
+      cursor: pointer;
+      font-family: inherit;
+    }
+
+    /* ── 하단 푸터 ── */
+    .footer {
+      text-align: center;
+      padding: 32px 0 10px;
+      font-size: 14px;
+      color: #bbb;
+      letter-spacing: 0.15em;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+
+    /* ── 토스트 메시지 ── 하단 중앙, 자동 사라짐 */
+    .toast {
+      position: fixed;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: #222;
+      color: white;
+      padding: 13px 22px;
+      border-radius: 32px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.2,0.8,0.2,1);
+      z-index: 1000;
+      pointer-events: none; /* 토스트 뒤 요소 클릭 통과 */
+      box-shadow: 0 12px 32px -8px rgba(0,0,0,0.4);
+      letter-spacing: -0.01em;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateX(-50%) translateY(0); /* 표시: 원위치로 슬라이드 업 */
+    }
+
+    /* ── 플로팅 전화 버튼 ── 화면 우하단 고정 */
+    .floating-call {
+      position: fixed;
+      right: 18px; bottom: 24px;
+      width: 58px; height: 58px;
+      border-radius: 50%;
+      border: none;
+      background: linear-gradient(135deg, #3753b1, #4f9edd);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 14px 28px rgba(55,83,177,0.35);
+      z-index: 999;
+      cursor: pointer;
+    }
+
+    .floating-call:active {
+      transform: scale(0.94);
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- ── 명함 카드 이미지 영역 ── -->
+  <div class="business-card" id="business-card">
+
+    <!-- BYD 로고 (우상단) -->
+    <div class="brand-logo-area">
+      <img src="byd-logo.png" alt="BYD Logo" class="byd-logo-img" />
+    </div>
+
+    <!-- 명함 텍스트 정보 (좌하단) -->
+    <div class="card-content">
+      <div class="name-line">
+        최 호 준
+        <span class="title">과장</span>
+      </div>
+      <div class="sub-title-line">Sales | Manager</div>
+      <div class="showroom-line">BYD Ilsan Showroom</div>
+      <div class="info-line">경기 고양시 일산동구 백마로 516</div>
+      <div class="info-line">hojun.choi@dtnetworks.co.kr</div>
+      <div class="info-line phone-bold">010 - 9037 - 8699</div>
+    </div>
+  </div>
+
+  <!-- ── 통화하기 / 연락처 저장 메인 CTA 버튼 ── -->
+  <div class="cta-row">
+    <!-- tel: 링크로 바로 전화 앱 실행 -->
+    <button class="cta-button cta-secondary" onclick="window.open('tel:01090378699')">
+      <svg width="20" height="20" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07
+                 a19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67
+                 A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72
+                 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91
+                 a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45
+                 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+      </svg>
+      통화하기
+    </button>
+
+    <!-- vCard 저장: iOS는 data URI / Android·Desktop은 Blob 방식 분기 -->
+    <button class="cta-button cta-secondary" onclick="saveContact()">
+      <svg width="20" height="20" viewBox="0 0 24 24"
+           fill="none" stroke="currentColor" stroke-width="2.5"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+        <line x1="20" y1="8" x2="20" y2="14"/>
+        <line x1="23" y1="11" x2="17" y2="11"/>
+      </svg>
+      연락처 저장
+    </button>
+  </div>
+
+  <!-- ── 명함 이미지 저장 버튼 (1열 전체 너비) ── -->
+  <div class="cta-row" style="grid-template-columns:1fr;">
+    <button class="cta-button cta-primary" onclick="downloadCardImage()">
+      <span class="material-icons-outlined"
+            style="font-size:27px;color:#ffffff;line-height:1;">save</span>
+      명함 이미지로 저장
+    </button>
+  </div>
+
+  <!-- ── e-Catalog 섹션: 차종별 PDF 카탈로그 링크 (2열 그리드) ── -->
+  <div class="section">
+    <div class="section-title">e-Catalog</div>
+
+    <div class="action-grid" style="grid-template-columns:repeat(2,1fr); gap:10px;">
+      <button class="action-item"
+              onclick="window.open('https://www.bydauto.kr/static/file/BYD_DOLPHIN_Catalog.pdf','_blank')">
+        <span class="action-label" style="font-size:18px;font-weight:700;">DOLPHIN</span>
+      </button>
+
+      <button class="action-item"
+              onclick="window.open('https://www.bydauto.kr/static/file/BYD_ATTO_3_Catalog.pdf','_blank')">
+        <span class="action-label" style="font-size:18px;font-weight:700;">ATTO3</span>
+      </button>
+
+      <button class="action-item"
+              onclick="window.open('https://www.bydauto.kr/static/file/seal_catalog.pdf','_blank')">
+        <span class="action-label" style="font-size:18px;font-weight:700;">SEAL</span>
+      </button>
+
+      <button class="action-item"
+              onclick="window.open('https://www.bydauto.kr/static/file/BYD_SEALION_7_Catalog.pdf','_blank')">
+        <span class="action-label" style="font-size:18px;font-weight:700;">SEALION7</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── CONTACT 섹션: 전시장 전화 / 문자 / 이메일 / 링크 복사 ── -->
+  <div class="section">
+    <div class="section-title">CONTACT</div>
+
+    <div class="action-grid">
+      <!-- 전시장 대표 번호 -->
+      <button class="action-item" onclick="window.open('tel:0319110940')">
+        <svg class="action-icon" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="action-label">전시장 전화</span>
+      </button>
+
+      <!-- 문자 보내기: Material Icons Outlined textsms 아이콘 사용 -->
+      <button class="action-item" onclick="window.open('sms:01090378699')">
+        <span class="material-icons-outlined action-icon"
+              style="width:auto;height:auto;font-size:24px;margin-bottom:8px;">textsms</span>
+        <span class="action-label">문자 보내기</span>
+      </button>
+
+      <!-- 이메일 -->
+      <button class="action-item" onclick="window.open('mailto:hojun.choi@dtnetworks.co.kr')">
+        <svg class="action-icon" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span class="action-label">이메일</span>
+      </button>
+
+      <!-- 명함 공유 모달 열기 -->
+      <button class="action-item" onclick="openShareModal()">
+        <svg class="action-icon" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+          <polyline points="16 6 12 2 8 6"/>
+          <line x1="12" y1="2" x2="12" y2="15"/>
+        </svg>
+        <span class="action-label">명함 공유</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- ── SHOWROOM LOCATION 섹션: 주소 + 지도 앱 연결 ── -->
+  <div class="section">
+    <div class="section-title">SHOWROOM LOCATION</div>
+
+    <!-- 주소 영역: maps_home_work 아이콘(36px, #4e5356) + 텍스트 -->
+    <div class="map-info">
+      <div class="map-pin">
+        <span class="material-icons-outlined">maps_home_work</span>
+      </div>
+      <div class="map-text">
+        <strong>BYD AUTO 일산전시장</strong>
+        <span>경기도 고양시 일산동구 백마로 516</span>
+      </div>
+    </div>
+
+    <!-- 지도 앱 연결 버튼 (3열: 티맵 / 카카오맵 / 네이버맵) -->
+    <div class="action-grid" style="margin-top:12px; grid-template-columns:repeat(3,1fr);">
+      <button class="action-item" onclick="openTmap()">
+        <div class="action-badge" style="background:#0086FF;color:#fff;">T</div>
+        <span class="action-label">티맵</span>
+      </button>
+
+      <button class="action-item" onclick="openKakaoMap()">
+        <div class="action-badge" style="background:#FEE500;color:#111;">K</div>
+        <span class="action-label">카카오맵</span>
+      </button>
+
+      <button class="action-item" onclick="openNaverMap()">
+        <div class="action-badge" style="background:#03C75A;color:#fff;">N</div>
+        <span class="action-label">네이버맵</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="footer">BYD | DT NETWORKS | Ilsan</div>
+</div>
+
+<!-- 플로팅 전화 버튼: 스크롤 중에도 항상 우하단 고정 -->
+<button class="floating-call" onclick="window.open('tel:01090378699')">☎</button>
+
+<!-- 토스트 메시지 컨테이너 -->
+<!-- ============ 명함 공유 모달 (바텀시트) ============
+     원본 방식 동일: 3가지 옵션 제공
+     ① 명함 이미지 저장 후 전송 (카톡·문자 권장)
+     ② 링크로 공유 (Web Share API)
+     ③ 링크 복사
+-->
+<div class="modal-overlay" id="share-modal" onclick="closeShareModal(event)">
+  <div class="modal" onclick="event.stopPropagation()">
+    <div class="modal-grip"></div>
+    <div class="modal-title">명함 공유하기</div>
+    <div class="modal-desc">카톡·문자에서 명함이 이미지로 보이게 하려면<br>'이미지로 저장 후 전송'을 추천드립니다.</div>
+
+    <div class="modal-list">
+      <!-- ① 이미지 저장 후 공유: BYD-PMY-namecard.jpg fetch 후 Web Share -->
+      <button class="modal-item" onclick="shareImageDirect()">
+        <div class="modal-item-icon" style="background:#FEE500;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1a1a">
+            <path d="M12 3C6.48 3 2 6.48 2 10.8c0 2.76 1.86 5.18 4.66 6.6-.2.7-.74 2.6-.84 3-.13.5.18.5.38.36.16-.1 2.54-1.74 3.56-2.42.74.1 1.5.16 2.24.16 5.52 0 10-3.48 10-7.7S17.52 3 12 3z"/>
+          </svg>
+        </div>
+        <div class="modal-item-text">
+          <strong>명함 이미지로 저장 후 전송</strong>
+          <span>가장 깔끔하게 보입니다 (권장)</span>
+        </div>
+      </button>
+
+      <!-- ② 링크 공유: navigator.share API, 미지원 시 링크 복사로 폴백 -->
+      <button class="modal-item" onclick="shareViaSystem()">
+        <div class="modal-item-icon" style="background:var(--accent-deep);">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+            <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/>
+            <line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+          </svg>
+        </div>
+        <div class="modal-item-text">
+          <strong>링크로 공유</strong>
+          <span>카톡·문자·메일 등 어디든</span>
+        </div>
+      </button>
+
+      <!-- ③ 링크 복사 -->
+      <button class="modal-item" onclick="copyLink()">
+        <div class="modal-item-icon" style="background:#e2e3e5;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+               stroke="var(--accent-deep)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+        </div>
+        <div class="modal-item-text">
+          <strong>링크 복사</strong>
+          <span>주소창에 붙여넣기</span>
+        </div>
+      </button>
+    </div>
+
+    <button class="modal-close" onclick="closeShareModal()">닫기</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<!--
+╔══════════════════════════════════════════════════════════════╗
+  🟡  명함 정보 수정 구역  🟡
+  아래 <script> 안의 CONTACT_INFO 와 CARD_IMAGE_URL 을 수정하세요.
+  이름·직책·연락처·주소·이미지 URL 을 한 곳에서 관리합니다.
+╚══════════════════════════════════════════════════════════════╝
+-->
+<!--NAMECARD-INFO-START▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
+<script>
+/*
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║   🟡🟡🟡  명함 정보 수정 구역  🟡🟡🟡                       ║
+║                                                              ║
+║   아래 CONTACT_INFO 값만 수정하면 전체 자동 반영됩니다.      ║
+║   ──────────────────────────────────────────────────         ║
+║   · firstName / lastName / fullName : 이름                   ║
+║   · title    : 직책                                          ║
+║   · company  : 회사명                                        ║
+║   · mobile   : 휴대폰 (하이픈 없이)                          ║
+║   · office   : 전시장 대표번호 (하이픈 없이)                 ║
+║   · email    : 이메일                                        ║
+║   · address  : 주소                                          ║
+║   · placeQuery : 지도 앱 검색어                              ║
+║                                                              ║
+║   CARD_IMAGE_URL : 명함 이미지 경로 (GitHub Raw URL)         ║
+║   CARD_IMAGE_FILENAME : 저장 시 파일명                       ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+*/
+const CONTACT_INFO = {
+  firstName:  '호준',           /* ★ 이름 */
+  lastName:   '최',             /* ★ 성 */
+  fullName:   '최호준',         /* ★ 표시 이름 */
+  title:      '과장',      /* ★ 직책 */
+  company:    'BYD 일산전시장', /* ★ 회사명 */
+  mobile:     '01090378699',    /* ★ 휴대폰 (하이픈 없이) */
+  office:     '0319110940',     /* ★ 전시장 대표번호 (하이픈 없이) */
+  email:      'hojun.choi@dtnetworks.co.kr', /* ★ 이메일 */
+  address:    '경기 고양시 일산동구 백마로 516',  /* ★ 주소 */
+  placeQuery: 'BYD Auto 일산전시장', /* ★ 지도 앱 검색어 */
+  website:    window.location.href
+};
+
+/* ── 명함 이미지 URL / 파일명 ──
+   이미지 생성 없이 GitHub Raw 파일을 직접 사용합니다 */
+const CARD_IMAGE_URL      = 'https://raw.githubusercontent.com/bydilsanmy/BYDIlsanMY/main/BYD-PMY-namecard.jpg';
+const CARD_IMAGE_FILENAME = '최호준_BYD명함.jpg';
+
+/* ── 공유 텍스트 ── */
+const SHARE_TITLE = `${CONTACT_INFO.fullName} | ${CONTACT_INFO.company}`;
+const SHARE_TEXT  = `${CONTACT_INFO.company} ${CONTACT_INFO.fullName} ${CONTACT_INFO.title} 명함`;
+
+/* ============================================================
+   이하 함수는 수정 불필요
+============================================================ */
+
+/* ── 토스트 메시지 표시 (2.2초 후 자동 소멸) ── */
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  clearTimeout(window.toastTimer);
+  window.toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
+}
+
+/* ── 연락처 저장 (vCard 3.0) ──
+   iOS Safari: Blob URL 다운로드 미지원 → data URI + window.open 방식
+   Android / Desktop: Blob + <a> 임시 클릭 방식 */
+function saveContact() {
+  // RFC 6350 준수: CRLF 줄바꿈, BOM 없음, UTF-8
+  const vcfText = [
+    'BEGIN:VCARD',
+    'VERSION:3.0',
+    'N:최;호준;;;',                                            // 성;이름;추가이름;경칭;접미사
+    'FN:최호준',
+    'ORG:BYD Auto 일산전시장',
+    'TITLE:과장',
+    'TEL;TYPE=CELL,VOICE:010-9037-8699',                   // 휴대폰
+    'TEL;TYPE=WORK,VOICE:031-911-0940',                    // 전시장 대표 번호
+    'EMAIL;TYPE=WORK,INTERNET:hojun.choi@dtnetworks.co.kr',
+    'ADR;TYPE=WORK:;;백마로 516;고양시 일산동구;경기도;;대한민국', // 사서함;확장;도로;도시;도/주;우편;국가
+    'URL;TYPE=WORK:' + CONTACT_INFO.website,
+    'END:VCARD'
+  ].join('\r\n') + '\r\n';
+
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+
+  if (isIOS) {
+    // iOS: data URI → Safari가 연락처 앱 "추가" 팝업 자동 실행
+    window.open('data:text/vcard;charset=utf-8,' + encodeURIComponent(vcfText), '_blank');
+  } else {
+    // Android / Desktop: Blob 객체 URL → <a download> 클릭 트릭
+    const url = URL.createObjectURL(new Blob([vcfText], { type: 'text/vcard;charset=utf-8' }));
+    const a = Object.assign(document.createElement('a'), { href: url, download: '최호준_BYD.vcf' });
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    setTimeout(() => URL.revokeObjectURL(url), 1000); // 메모리 해제
+  }
+
+  showToast('연락처를 저장하세요 📇');
+}
+
+/* ── 현재 페이지 URL 클립보드 복사 ── */
+function copyLink() {
+  closeShareModal();
+  navigator.clipboard.writeText(window.location.href)
+    .then(() => showToast('링크가 복사되었습니다'))
+    .catch(() => showToast('복사에 실패했습니다'));
+}
+
+/* ── 앱 딥링크 범용 헬퍼 ──
+   appUrl 을 먼저 시도하고, 1.2초 내 앱이 열리지 않으면 fallbackUrl 로 이동
+   pagehide 이벤트(앱 전환 성공 시 발생)로 타이머 취소 */
+function tryAppLink(appUrl, fallbackUrl) {
+  const timer = setTimeout(() => { window.location.href = fallbackUrl; }, 1200);
+  window.location.href = appUrl;
+  window.addEventListener('pagehide', () => clearTimeout(timer), { once: true });
+}
+
+/* ── 지도 앱 연결 ── */
+function openTmap() {
+  const q = encodeURIComponent(CONTACT_INFO.placeQuery);
+  tryAppLink(`tmap://search?name=${q}`, 'https://surl.tmobiapi.com/d97deca3');
+}
+
+function openKakaoMap() {
+  window.location.href = `https://map.kakao.com/link/search/${encodeURIComponent(CONTACT_INFO.placeQuery)}`;
+}
+
+function openNaverMap() {
+  const q = encodeURIComponent(CONTACT_INFO.placeQuery);
+  tryAppLink(`nmap://search?query=${q}&appname=dt.networks.card`, `https://map.naver.com/p/search/${q}`);
+}
+
+/* ── 공유 모달 열기 / 닫기 ── */
+function openShareModal() {
+  document.getElementById('share-modal').classList.add('show');
+}
+
+function closeShareModal(e) {
+  /* 오버레이 클릭 또는 버튼 직접 호출 시 닫힘
+     modal 본체 클릭은 stopPropagation으로 차단되어 닫히지 않음 */
+  if (!e || e.target === e.currentTarget) {
+    document.getElementById('share-modal').classList.remove('show');
+  }
+}
+
+/* ── ① 이미지 저장 후 공유 (모달 옵션 1) ──
+   BYD-PMY-namecard.jpg 를 fetch → Blob → Web Share API 로 직접 전달
+   Web Share 미지원 또는 파일 공유 불가 환경 → 그냥 다운로드로 폴백 */
+function shareImageDirect() {
+  closeShareModal();
+  showToast('이미지를 준비 중입니다...');
+
+  fetch(CARD_IMAGE_URL)
+    .then(res => {
+      if (!res.ok) throw new Error('fetch failed');
+      return res.blob();
+    })
+    .then(blob => {
+      const file = new File([blob], CARD_IMAGE_FILENAME, { type: 'image/jpeg' });
+
+      // Web Share API + 파일 공유 가능한 환경 (iOS Safari 15+, Android Chrome 등)
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        return navigator.share({
+          files: [file],
+          title: SHARE_TITLE,
+          text: SHARE_TEXT
+        }).catch(() => fallbackDownload(blob)); // 공유 취소 시 다운로드
+      } else {
+        // 파일 공유 미지원 → 다운로드로 폴백
+        fallbackDownload(blob);
+      }
+    })
+    .catch(() => {
+      // 네트워크 오류 → 새 탭으로 열기
+      window.open(CARD_IMAGE_URL, '_blank');
+      showToast('이미지를 새 탭에서 저장하세요');
+    });
+}
+
+/* ── ② 링크 공유 (모달 옵션 2) ──
+   Web Share API로 URL 공유, 미지원 환경은 링크 복사로 폴백 */
+function shareViaSystem() {
+  closeShareModal();
+  if (navigator.share) {
+    navigator.share({
+      title: SHARE_TITLE,
+      text: SHARE_TEXT,
+      url: window.location.href
+    }).catch(() => {}); // 사용자 취소는 무시
+  } else {
+    navigator.clipboard.writeText(window.location.href)
+      .then(() => showToast('링크가 복사되었습니다'))
+      .catch(() => showToast('복사에 실패했습니다'));
+  }
+}
+
+/* ── 명함 이미지 다운로드 (Blob → <a download>) ── */
+function fallbackDownload(blob) {
+  const url = URL.createObjectURL(blob);
+  const a = Object.assign(document.createElement('a'), {
+    href: url,
+    download: CARD_IMAGE_FILENAME
+  });
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  setTimeout(() => URL.revokeObjectURL(url), 1000);
+  showToast('명함 이미지가 저장되었습니다');
+}
+
+/* ── 명함 이미지로 저장 버튼 (하단 단독 버튼) ──
+   모달 경유 없이 바로 다운로드 */
+function downloadCardImage() {
+  showToast('이미지를 준비 중입니다...');
+  fetch(CARD_IMAGE_URL)
+    .then(res => {
+      if (!res.ok) throw new Error('fetch failed');
+      return res.blob();
+    })
+    .then(blob => fallbackDownload(blob))
+    .catch(() => {
+      window.open(CARD_IMAGE_URL, '_blank');
+      showToast('이미지를 새 탭에서 저장하세요');
+    });
+}
+</script>
+
+</body>
+</html>
