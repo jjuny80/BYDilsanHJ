@@ -2,12 +2,12 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <!-- 모바일 최적화: 최대 스케일 고정, 사용자 확대 비허용 -->
+  
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 
   <title>최호준 | BYD 일산전시장</title>
 
-  <!-- SNS 공유 시 미리보기 메타 정보 (Open Graph) -->
+  
   <meta property="og:type"        content="profile" />
   <meta property="og:title"       content="최호준 과장 | BYD Ilsan" />
   <meta property="og:description" content="010-9037-8699" />
@@ -15,40 +15,48 @@
   <meta property="og:image:width"  content="1024" />
   <meta property="og:image:height" content="595" />
   <meta property="og:image:alt"    content="최호준 과장 명함 | BYD Auto 일산전시장" />
-  <!-- 브라우저 상단 주소창 색상 (Android Chrome 등) -->
+  
   <meta name="theme-color" content="#3753B1" />
 
-  <!-- 폰트 프리커넥트: 렌더링 지연 최소화 -->
+  
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-  <!-- 한글 폰트: Pretendard (CDN), 영문 보조: Source Sans Pro -->
+  
   <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700;900&display=swap" rel="stylesheet" />
 
-  <!-- Material Icons Outlined: maps_home_work·textsms·save 아이콘 사용 -->
+  
   <link href="https://fonts.googleapis.com/css2?family=Material+Icons+Outlined" rel="stylesheet" />
 
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=distance,laptop_car" />
   <style>
-    /* ── 전역 초기화 ── */
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+
+  <style>
+    
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      -webkit-tap-highlight-color: transparent; /* 모바일 터치 시 파란 하이라이트 제거 */
+      -webkit-tap-highlight-color: transparent; 
     }
 
-    /* ── 디자인 토큰(CSS 변수) ── 색상·배경을 한 곳에서 관리 */
+    
     :root {
-      --card-bg:    #e2e3e5; /* 명함 카드 배경 */
-      --text-main:  #4e5356; /* 기본 텍스트 */
-      --text-mute:  #7a8080; /* 보조 텍스트 */
-      --accent-deep: #3753b1; /* 메인 강조색 (BYD 블루) */
-      --accent-light:#4f9edd; /* 보조 강조색 (하늘색) */
+      --card-bg:    #e2e3e5; 
+      --text-main:  #4e5356; 
+      --text-mute:  #7a8080; 
+      --accent-deep: #3753b1; 
+      --accent-light:#4f9edd; 
       --paper:      #efefef;
-      --btn-bg:     #e2e3e5; /* 섹션·버튼 배경 */
-      --paper-soft: #f8f9fa; /* 페이지 배경 */
+      --btn-bg:     #e2e3e5; 
+      --paper-soft: #f8f9fa; 
     }
 
     html, body {
@@ -56,45 +64,45 @@
     }
 
     body {
-      /* 한글 우선, 시스템 폰트 폴백 순 */
+      
       font-family: "Source Sans Pro", "Pretendard", -apple-system, sans-serif;
       color: var(--text-main);
       min-height: 100vh;
-      padding: 14px 14px 60px; /* 하단 패딩: 플로팅 버튼 가림 방지 */
+      padding: 14px 14px 60px; 
       line-height: 1.5;
-      -webkit-font-smoothing: antialiased; /* macOS/iOS 폰트 안티앨리어싱 */
+      -webkit-font-smoothing: antialiased; 
     }
 
-    /* ── 레이아웃 컨테이너 ── 최대 너비 480px, 중앙 정렬 */
+    
     .container {
       max-width: 480px;
       margin: 0 auto;
     }
 
-    /* ── 명함 카드 ── */
+    
     .business-card {
       position: relative;
       background: var(--card-bg);
-      aspect-ratio: 1.72 / 1; /* 실물 명함 비율 */
+      aspect-ratio: 1.72 / 1; 
       width: 100%;
       border-radius: 14px;
       box-shadow:
         0 26px 40px -12px rgba(0,0,0,0.22),
         0 12px 18px -6px  rgba(0,0,0,0.14),
-        0 1px 0 0 rgba(255,255,255,0.6) inset; /* 상단 하이라이트 */
+        0 1px 0 0 rgba(255,255,255,0.6) inset; 
       overflow: hidden;
       margin-bottom: 20px;
       border: 1px solid rgba(0,0,0,0.05);
-      animation: cardIn 0.7s cubic-bezier(0.2,0.8,0.2,1) both; /* 입장 애니메이션 */
+      animation: cardIn 0.7s cubic-bezier(0.2,0.8,0.2,1) both; 
     }
 
-    /* 카드 입장 애니메이션: 아래에서 살짝 올라오며 페이드인 */
+    
     @keyframes cardIn {
       from { opacity: 0; transform: translateY(12px) scale(0.98); }
       to   { opacity: 1; transform: translateY(0)    scale(1);    }
     }
 
-    /* 카드 하단 블루 그라데이션 바 */
+    
     .business-card::before {
       content: "";
       position: absolute;
@@ -104,7 +112,7 @@
       pointer-events: none;
     }
 
-    /* BYD 로고: 우상단 고정 */
+    
     .brand-logo-area {
       position: absolute;
       top: 12%; right: 6%;
@@ -115,20 +123,20 @@
     }
 
     .byd-logo-img {
-      width: clamp(95px, 22vw, 125px); /* 반응형 로고 크기 */
+      width: clamp(95px, 22vw, 125px); 
       height: auto;
       display: block;
       opacity: 0.9;
     }
 
-    /* 명함 텍스트 영역: 좌하단 고정 */
+    
     .card-content {
       position: absolute;
       left: 6%; right: 6%; bottom: 11%;
       z-index: 2;
     }
 
-    /* 이름 줄: clamp로 화면 너비에 따라 자동 조정 */
+    
     .name-line {
       font-weight: 700;
       font-size: clamp(20px, 4.8vw, 26px);
@@ -140,14 +148,14 @@
       gap: 6px;
     }
 
-    /* 직책 뱃지 (이름 옆 소형 텍스트) */
+    
     .name-line span.title {
       font-size: 0.52em;
       font-weight: 600;
       color: var(--text-mute);
     }
 
-    /* 명함 내 보조 정보 줄 (직책·이메일·주소 등) 공통 스타일 */
+    
     .sub-title-line,
     .showroom-line,
     .info-line {
@@ -160,7 +168,7 @@
       line-height: 1.28;
     }
 
-    /* 전화번호 줄: 굵게 강조 */
+    
     .info-line.phone-bold {
       font-weight: 800;
       color: var(--text-main);
@@ -169,7 +177,7 @@
       margin-bottom: 0;
     }
 
-    /* ── 섹션 카드 (CONTACT / e-Catalog / SHOWROOM LOCATION) ── */
+    
     .section {
       background: var(--btn-bg);
       border-radius: 16px;
@@ -179,7 +187,7 @@
       box-shadow: 0 10px 20px -6px rgba(0,0,0,0.12);
     }
 
-    /* 섹션 상단 레이블 */
+    
     .section-title {
       font-size: 11px;
       font-weight: 700;
@@ -189,21 +197,21 @@
       text-transform: uppercase;
     }
 
-    /* ── 통화하기 / 연락처 저장 버튼 행 ── */
+    
     .cta-row {
       display: grid;
-      grid-template-columns: 1fr 1fr; /* 기본 2열 */
+      grid-template-columns: 1fr 1fr; 
       gap: 10px;
       margin-bottom: 14px;
     }
 
-    /* CTA 버튼 공통: 아이콘 + 텍스트 수평 중앙 정렬 */
+    
     .cta-button {
       padding: 15px 12px;
       border-radius: 12px;
       border: none;
       font-family: inherit;
-      font-size: 17px; /* 통화하기·연락처 저장 글씨 크기 */
+      font-size: 17px; 
       font-weight: 700;
       cursor: pointer;
       display: flex;
@@ -218,14 +226,14 @@
       transform: scale(0.97);
     }
 
-    /* 파란 채움 버튼 (통화하기) */
+    
     .cta-primary {
       background: var(--accent-deep);
       color: #ffffff;
       box-shadow: 0 10px 22px -4px rgba(55,83,177,0.45);
     }
 
-    /* 외곽선 버튼 (연락처 저장) */
+    
     .cta-secondary {
       background: var(--btn-bg);
       color: var(--accent-deep);
@@ -233,14 +241,14 @@
       box-shadow: 0 10px 20px -6px rgba(0,0,0,0.15);
     }
 
-    /* ── 아이콘 그리드 (CONTACT / SHOWROOM 내부 버튼 묶음) ── */
+    
     .action-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr); /* CONTACT 섹션 기본 4열 */
+      grid-template-columns: repeat(4, 1fr); 
       gap: 8px;
     }
 
-    /* 개별 아이콘 버튼: 세로 중앙 정렬, 흰 카드 */
+    
     .action-item {
       display: flex;
       flex-direction: column;
@@ -263,7 +271,7 @@
       background: #edf0f2;
     }
 
-    /* SVG 아이콘 공통 크기 (CONTACT 그리드 내 SVG) */
+    
     .action-icon {
       width: 24px;
       height: 24px;
@@ -271,20 +279,20 @@
       color: var(--text-main);
     }
 
-    /* 지도 앱(티맵·카카오·네이버) 색상 뱃지 */
+    
     .action-badge {
-      width: 26px;
-      height: 26px;
+      width: 31px;
+      height: 31px;
       margin-bottom: 7px;
-      border-radius: 7px;
+      border-radius: 8px;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 12px;
+      font-size: 20.3px;
     }
 
-    /* 아이콘 버튼 하단 텍스트 레이블 */
+    
     .action-label {
       font-size: 11px;
       font-weight: 600;
@@ -293,7 +301,7 @@
       line-height: 1.25;
     }
 
-    /* ── SHOWROOM LOCATION 주소 영역 ── */
+    
     .map-info {
       display: flex;
       align-items: center;
@@ -305,7 +313,7 @@
       box-shadow: 0 4px 10px -2px rgba(0,0,0,0.08);
     }
 
-    /* 주소 앞 maps_home_work 아이콘 컨테이너 */
+    
     .map-pin {
       flex-shrink: 0;
       width: 38px;
@@ -315,8 +323,8 @@
       justify-content: center;
     }
 
-    /* maps_home_work Material Icon: 테두리 없음, 색상 #4e5356 */
-    .map-pin .material-icons-outlined {
+    
+    .map-pin .material-symbols-outlined {
       font-size: 36px;
       color: #4e5356;
       line-height: 1;
@@ -327,15 +335,19 @@
       font-size: 13px;
       font-weight: 700;
       color: var(--text-main);
-      margin-bottom: 1px; 
+      margin-bottom: 0px;
+      line-height: 1.1;
     }
 
     .map-text span {
       color: var(--text-mute);
       font-size: 12px;
+      line-height: 1.1;
+    }
+      margin-bottom: 1px; 
     }
 
-    /* ── 공유 모달 오버레이 ── 바텀시트 방식 */
+    
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -357,7 +369,7 @@
       to   { opacity: 1; }
     }
 
-    /* 모달 바텀시트 본체 */
+    
     .modal {
       background: var(--paper-soft);
       width: 100%;
@@ -372,7 +384,7 @@
       to   { transform: translateY(0); }
     }
 
-    /* 드래그 핸들 바 */
+    
     .modal-grip {
       width: 40px;
       height: 4px;
@@ -403,7 +415,7 @@
       gap: 6px;
     }
 
-    /* 각 공유 옵션 행 */
+    
     .modal-item {
       padding: 14px;
       border-radius: 12px;
@@ -462,7 +474,7 @@
       font-family: inherit;
     }
 
-    /* ── 하단 푸터 ── */
+    
     .footer {
       text-align: center;
       padding: 32px 0 10px;
@@ -473,7 +485,7 @@
       text-transform: uppercase;
     }
 
-    /* ── 토스트 메시지 ── 하단 중앙, 자동 사라짐 */
+    
     .toast {
       position: fixed;
       bottom: 32px;
@@ -488,17 +500,17 @@
       opacity: 0;
       transition: all 0.3s cubic-bezier(0.2,0.8,0.2,1);
       z-index: 1000;
-      pointer-events: none; /* 토스트 뒤 요소 클릭 통과 */
+      pointer-events: none; 
       box-shadow: 0 12px 32px -8px rgba(0,0,0,0.4);
       letter-spacing: -0.01em;
     }
 
     .toast.show {
       opacity: 1;
-      transform: translateX(-50%) translateY(0); /* 표시: 원위치로 슬라이드 업 */
+      transform: translateX(-50%) translateY(0); 
     }
 
-    /* ── 플로팅 전화 버튼 ── 화면 우하단 고정 */
+    
     .floating-call {
       position: fixed;
       right: 18px; bottom: 24px;
@@ -525,15 +537,15 @@
 
 <div class="container">
 
-  <!-- ── 명함 카드 이미지 영역 ── -->
+  
   <div class="business-card" id="business-card">
 
-    <!-- BYD 로고 (우상단) -->
+    
     <div class="brand-logo-area">
       <img src="byd-logo.png" alt="BYD Logo" class="byd-logo-img" />
     </div>
 
-    <!-- 명함 텍스트 정보 (좌하단) -->
+    
     <div class="card-content">
       <div class="name-line">
         최 호 준
@@ -547,9 +559,9 @@
     </div>
   </div>
 
-  <!-- ── 통화하기 / 연락처 저장 메인 CTA 버튼 ── -->
+  
   <div class="cta-row">
-    <!-- tel: 링크로 바로 전화 앱 실행 -->
+    
     <button class="cta-button cta-secondary" onclick="window.open('tel:01090378699')">
       <svg width="20" height="20" viewBox="0 0 24 24"
            fill="none" stroke="currentColor" stroke-width="2.5"
@@ -564,7 +576,7 @@
       통화하기
     </button>
 
-    <!-- vCard 저장: iOS는 data URI / Android·Desktop은 Blob 방식 분기 -->
+    
     <button class="cta-button cta-secondary" onclick="saveContact()">
       <svg width="20" height="20" viewBox="0 0 24 24"
            fill="none" stroke="currentColor" stroke-width="2.5"
@@ -578,7 +590,7 @@
     </button>
   </div>
 
-  <!-- ── 명함 이미지 저장 버튼 (1열 전체 너비) ── -->
+  
   <div class="cta-row" style="grid-template-columns:1fr;">
     <button class="cta-button cta-primary" onclick="downloadCardImage()">
       <span class="material-icons-outlined"
@@ -587,7 +599,7 @@
     </button>
   </div>
 
-  <!-- ── e-Catalog 섹션: 차종별 PDF 카탈로그 링크 (2열 그리드) ── -->
+  
   <div class="section">
     <div class="section-title">e-Catalog</div>
 
@@ -614,12 +626,255 @@
     </div>
   </div>
 
-  <!-- ── CONTACT 섹션: 전시장 전화 / 문자 / 이메일 / 링크 복사 ── -->
+  
+  <div style="background:#111111;border-radius:16px;padding:20px 16px 0;margin-bottom:14px;overflow:hidden;box-shadow:0 10px 20px -6px rgba(0,0,0,0.22);">
+
+    
+    <div style="text-align:center;padding-bottom:16px;">
+      <span style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:17px;font-weight:700;color:#ffffff;letter-spacing:-0.02em;">
+        ICE와 EV 유지·관리비 비교
+      </span>
+      <span style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:11px;color:#999999;margin-left:6px;letter-spacing:-0.01em;">
+        (연 25,000Km 주행 기준)
+      </span>
+    </div>
+
+    
+    <table style="width:100%;border-collapse:collapse;font-family:'Pretendard','Source Sans Pro',sans-serif;">
+      <thead>
+        <tr>
+          <th style="background:#686D71;color:#ffffff;font-size:13px;font-weight:700;padding:10px 8px;text-align:center;border:1px solid #333;width:36%;">비교항목</th>
+          <th style="background:#686D71;color:#ffffff;font-size:13px;font-weight:700;padding:10px 8px;text-align:center;border:1px solid #333;width:32%;">ICE</th>
+          <th style="background:#686D71;color:#ffffff;font-size:13px;font-weight:700;padding:10px 8px;text-align:center;border:1px solid #333;width:32%;">EV</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:#cccccc;font-size:12px;padding:10px 8px;text-align:center;border:1px solid #333;">연간 자동차세</td>
+          <td style="color:#aaaaaa;font-size:12px;padding:10px 8px;text-align:right;border:1px solid #333;">290,000 원</td>
+          <td style="color:#4f9edd;font-size:12px;font-weight:700;padding:10px 8px;text-align:right;border:1px solid #333;">130,000 원</td>
+        </tr>
+        <tr>
+          <td style="color:#cccccc;font-size:12px;padding:10px 8px;text-align:center;border:1px solid #333;">연간 연료/충전비</td>
+          <td style="color:#aaaaaa;font-size:12px;padding:10px 8px;text-align:right;border:1px solid #333;">약 3,900,000 원</td>
+          <td style="color:#4f9edd;font-size:12px;font-weight:700;padding:10px 8px;text-align:right;border:1px solid #333;">약 1,500,000 원</td>
+        </tr>
+        <tr>
+          <td style="color:#cccccc;font-size:12px;padding:10px 8px;text-align:center;border:1px solid #333;">연간 소모품 교체비</td>
+          <td style="color:#aaaaaa;font-size:12px;padding:10px 8px;text-align:right;border:1px solid #333;">약 450,000 원</td>
+          <td style="color:#4f9edd;font-size:12px;font-weight:700;padding:10px 8px;text-align:right;border:1px solid #333;">약 30,000 원</td>
+        </tr>
+        <tr>
+          <td style="color:#cccccc;font-size:12px;padding:10px 8px;text-align:center;border:1px solid #333;">취득세 지원</td>
+          <td style="color:#aaaaaa;font-size:12px;padding:10px 8px;text-align:right;border:1px solid #333;">혜택없음</td>
+          <td style="color:#4f9edd;font-size:12px;font-weight:700;padding:10px 8px;text-align:right;border:1px solid #333;">- 1,400,000 원</td>
+        </tr>
+        <tr>
+          <td style="color:#cccccc;font-size:12px;padding:10px 8px;text-align:center;border:1px solid #333;">공영주차장 할인</td>
+          <td style="color:#aaaaaa;font-size:12px;padding:10px 8px;text-align:right;border:1px solid #333;">혜택없음</td>
+          <td style="color:#4f9edd;font-size:12px;font-weight:700;padding:10px 8px;text-align:right;border:1px solid #333;">50% 할인</td>
+        </tr>
+        <tr>
+          <td style="color:#cccccc;font-size:12px;padding:10px 8px;text-align:center;border:1px solid #333;">고속도로 통행료 할인</td>
+          <td style="color:#aaaaaa;font-size:12px;padding:10px 8px;text-align:right;border:1px solid #333;">혜택없음</td>
+          <td style="color:#4f9edd;font-size:12px;font-weight:700;padding:10px 8px;text-align:right;border:1px solid #333;">30% 할인</td>
+        </tr>
+      </tbody>
+    </table>
+
+    
+    <div style="background:#3753b1;margin:0 -16px;padding:16px 20px;text-align:center;">
+      <div style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:12px;color:#ffffff;margin-bottom:6px;letter-spacing:-0.01em;">5년 보유 시 총 절감 예상액</div>
+      <div style="font-family:'Pretendard','Source Sans Pro',sans-serif;color:#ffffff;letter-spacing:-0.02em;display:flex;align-items:baseline;justify-content:center;gap:4px;">
+        <span style="font-size:13px;font-weight:400;">약</span>
+        <span style="font-size:28px;font-weight:800;">14,900,000</span>
+        <span style="font-size:13px;font-weight:400;">원</span>
+        <span style="font-size:28px;font-weight:800;">+ α</span>
+      </div>
+    </div>
+
+    
+    <div style="text-align:center;padding:10px 0 12px;">
+      <span style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:10px;color:#666666;">상기 이미지 및 내용은 실제 판매차량과 상이할 수 있습니다.</span>
+    </div>
+  </div>
+
+  
+  <style>
+    .calc-label {
+      font-size: clamp(10px, 2.5vw, 11px);
+      font-weight: 600;
+      color: #555;
+      font-family: 'Pretendard','Source Sans Pro',sans-serif;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .calc-input {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: clamp(6px, 2vw, 9px) clamp(7px, 2vw, 10px);
+      font-size: clamp(11px, 3vw, 13px);
+      font-family: 'Pretendard','Source Sans Pro',sans-serif;
+      color: #333;
+      outline: none;
+      box-sizing: border-box;
+      -webkit-appearance: none;
+    }
+    .calc-input:focus { border-color: #80c9ff; }
+    .calc-select {
+      width: 100%;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: clamp(6px, 2vw, 9px) clamp(7px, 2vw, 10px);
+      font-size: clamp(11px, 3vw, 13px);
+      font-family: 'Pretendard','Source Sans Pro',sans-serif;
+      color: #333;
+      outline: none;
+      background: #fff;
+      box-sizing: border-box;
+    }
+    .period-btn {
+      flex: 1;
+      padding: clamp(6px, 2vw, 9px) 0;
+      border: 1.5px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+      font-size: clamp(11px, 3vw, 13px);
+      font-family: 'Pretendard','Source Sans Pro',sans-serif;
+      color: #555;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-weight: 600;
+    }
+    .period-btn.active {
+      background: #3753b1;
+      color: #fff;
+      border-color: #3753b1;
+    }
+    .calc-th {
+      padding: clamp(5px,1.5vw,8px);
+      font-size: clamp(10px,2.5vw,12px);
+      font-weight: 600;
+      border-bottom: 1px solid #ddd;
+      text-align: center;
+    }
+    .calc-td-label {
+      padding: clamp(5px,1.5vw,8px);
+      font-size: clamp(10px,2.5vw,11px);
+      color: #555;
+      font-family: 'Pretendard','Source Sans Pro',sans-serif;
+    }
+    .calc-td {
+      padding: clamp(5px,1.5vw,8px);
+      font-size: clamp(10px,2.5vw,11px);
+      text-align: right;
+      font-family: 'Pretendard','Source Sans Pro',sans-serif;
+      white-space: nowrap;
+    }
+  </style>
+
+  <div style="margin-bottom:14px;">
+    <button id="calc-toggle" onclick="toggleCalc()"
+            style="width:100%;background:#80c9ff;border:none;border-radius:16px;padding:16px 20px;display:flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;box-shadow:0 10px 20px -6px rgba(128,201,255,0.35);font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:17px;font-weight:700;color:#ffffff;letter-spacing:-0.02em;">
+      <span class="material-symbols-outlined" style="font-size:27px;color:#ffffff;line-height:1;">laptop_car</span>
+      전기차 전환비용 계산기
+      <span id="calc-arrow" style="font-size:18px;transition:transform 0.3s;">▾</span>
+    </button>
+
+    <div id="calc-panel" style="display:none;background:#ffffff;border-radius:0 0 16px 16px;padding:16px 14px 16px;box-shadow:0 10px 20px -6px rgba(0,0,0,0.10);border:1px solid #e0e0e0;border-top:none;">
+      <p style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:11px;color:#999;text-align:center;margin-bottom:14px;">현재 차량 정보를 입력하고 BYD 전기차 전환 시 절감 비용을 확인하세요.</p>
+
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
+        <div><label class="calc-label">배기량 (cc)</label><input id="c-cc" class="calc-input" type="number" inputmode="numeric" placeholder="예) 2000"/></div>
+        <div><label class="calc-label">연비 (km/L)</label><input id="c-mpg" class="calc-input" type="number" inputmode="decimal" placeholder="예) 12"/></div>
+        <div><label class="calc-label">연료 단가 (원/L)</label><input id="c-fuel" class="calc-input" type="number" inputmode="numeric" placeholder="예) 1650"/></div>
+        <div><label class="calc-label">연간 주행거리 (km)</label><input id="c-km" class="calc-input" type="number" inputmode="numeric" placeholder="예) 20000"/></div>
+      </div>
+
+      <div style="margin-bottom:8px;">
+        <label class="calc-label">BYD 모델 선택</label>
+        <select id="c-model" class="calc-select">
+          <option value="dolphin">BYD DOLPHIN</option>
+          <option value="dolphin_active">BYD DOLPHIN Active</option>
+          <option value="atto3">BYD ATTO 3</option>
+          <option value="seal">BYD SEAL</option>
+          <option value="seal_plus">BYD SEAL PLUS</option>
+          <option value="seal_awd">BYD SEAL AWD</option>
+          <option value="sealion7">BYD SEALION 7</option>
+        </select>
+      </div>
+
+      <div style="margin-bottom:14px;">
+        <label class="calc-label">비교 기간</label>
+        <div style="display:flex;gap:6px;">
+          <button class="period-btn" data-year="1" onclick="setPeriod(1)">1년</button>
+          <button class="period-btn" data-year="3" onclick="setPeriod(3)">3년</button>
+          <button class="period-btn active" data-year="5" onclick="setPeriod(5)">5년</button>
+        </div>
+      </div>
+
+      <button onclick="runCalc()"
+              style="width:100%;background:#3753b1;color:#fff;border:none;border-radius:10px;padding:12px;font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:clamp(13px,3.5vw,15px);font-weight:700;cursor:pointer;letter-spacing:-0.01em;">
+        유지비 절감액 확인
+      </button>
+
+      <div id="calc-result" style="display:none;margin-top:14px;">
+        <div style="background:#3753b1;border-radius:12px;padding:14px;text-align:center;margin-bottom:12px;">
+          <div id="res-period" style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:11px;color:#aac4ff;margin-bottom:3px;"></div>
+          <div style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:11px;color:#ccdeff;margin-bottom:5px;">총 절감 예상액</div>
+          <div id="res-total" style="font-family:'Pretendard','Source Sans Pro',sans-serif;font-size:clamp(20px,5vw,26px);font-weight:800;color:#ffffff;"></div>
+        </div>
+
+        <table style="width:100%;border-collapse:collapse;font-family:'Pretendard','Source Sans Pro',sans-serif;table-layout:fixed;">
+          <colgroup><col style="width:38%"><col style="width:31%"><col style="width:31%"></colgroup>
+          <thead>
+            <tr style="background:#f0f4ff;">
+              <th class="calc-th" style="text-align:left;color:#555;">항목</th>
+              <th class="calc-th" style="color:#555;">내 차(ICE)</th>
+              <th class="calc-th" style="color:#3753b1;">BYD EV</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid #eee;">
+              <td class="calc-td-label">연간 연료·충전비</td>
+              <td id="r-ice-fuel" class="calc-td" style="color:#333;"></td>
+              <td id="r-ev-fuel"  class="calc-td" style="color:#3753b1;font-weight:700;"></td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;">
+              <td class="calc-td-label">자동차세+환경부담금</td>
+              <td id="r-ice-tax"  class="calc-td" style="color:#333;"></td>
+              <td id="r-ev-tax"   class="calc-td" style="color:#3753b1;font-weight:700;"></td>
+            </tr>
+            <tr style="border-bottom:1px solid #eee;">
+              <td class="calc-td-label">소모품 교체비</td>
+              <td id="r-ice-parts" class="calc-td" style="color:#333;"></td>
+              <td id="r-ev-parts"  class="calc-td" style="color:#3753b1;font-weight:700;"></td>
+            </tr>
+            <tr>
+              <td class="calc-td-label">취득세 감면 (1회)</td>
+              <td class="calc-td" style="color:#333;">-</td>
+              <td id="r-ev-acq"   class="calc-td" style="color:#3753b1;font-weight:700;"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <p style="font-size:10px;color:#bbb;margin-top:10px;font-family:'Pretendard','Source Sans Pro',sans-serif;line-height:1.6;">
+          ※ 충전비: 완속 285원/kWh 기준<br>
+          ※ 자동차세: 배기량 기준 현행법 / 환경개선부담금: 연 9만원 기준<br>
+          ※ 취득세 감면 140만원 (2026년 현행법)<br>
+          ※ 본 결과는 참고용이며 실제와 다를 수 있습니다.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  
   <div class="section">
     <div class="section-title">CONTACT</div>
 
     <div class="action-grid">
-      <!-- 전시장 대표 번호 -->
+      
       <button class="action-item" onclick="window.open('tel:0319110940')">
         <svg class="action-icon" viewBox="0 0 24 24"
              fill="none" stroke="currentColor" stroke-width="2"
@@ -630,14 +885,14 @@
         <span class="action-label">전시장 전화</span>
       </button>
 
-      <!-- 문자 보내기: Material Icons Outlined textsms 아이콘 사용 -->
+      
       <button class="action-item" onclick="window.open('sms:01090378699')">
         <span class="material-icons-outlined action-icon"
               style="width:auto;height:auto;font-size:24px;margin-bottom:8px;">textsms</span>
         <span class="action-label">문자 보내기</span>
       </button>
 
-      <!-- 이메일 -->
+      
       <button class="action-item" onclick="window.open('mailto:hojun.choi@dtnetworks.co.kr')">
         <svg class="action-icon" viewBox="0 0 24 24"
              fill="none" stroke="currentColor" stroke-width="2"
@@ -648,7 +903,7 @@
         <span class="action-label">이메일</span>
       </button>
 
-      <!-- 명함 공유 모달 열기 -->
+      
       <button class="action-item" onclick="openShareModal()">
         <svg class="action-icon" viewBox="0 0 24 24"
              fill="none" stroke="currentColor" stroke-width="2"
@@ -662,14 +917,14 @@
     </div>
   </div>
 
-  <!-- ── SHOWROOM LOCATION 섹션: 주소 + 지도 앱 연결 ── -->
+  
   <div class="section">
     <div class="section-title">SHOWROOM LOCATION</div>
 
-    <!-- 주소 영역: maps_home_work 아이콘(36px, #4e5356) + 텍스트 -->
+    
     <div class="map-info">
       <div class="map-pin">
-        <span class="material-icons-outlined">maps_home_work</span>
+        <span class="material-symbols-outlined">distance</span>
       </div>
       <div class="map-text">
         <strong>BYD AUTO 일산전시장</strong>
@@ -677,7 +932,7 @@
       </div>
     </div>
 
-    <!-- 지도 앱 연결 버튼 (3열: 티맵 / 카카오맵 / 네이버맵) -->
+    
     <div class="action-grid" style="margin-top:12px; grid-template-columns:repeat(3,1fr);">
       <button class="action-item" onclick="openTmap()">
         <div class="action-badge" style="background:#0086FF;color:#fff;">T</div>
@@ -699,16 +954,8 @@
   <div class="footer">BYD | DT NETWORKS | Ilsan</div>
 </div>
 
-<!-- 플로팅 전화 버튼: 스크롤 중에도 항상 우하단 고정 -->
 <button class="floating-call" onclick="window.open('tel:01090378699')">☎</button>
 
-<!-- 토스트 메시지 컨테이너 -->
-<!-- ============ 명함 공유 모달 (바텀시트) ============
-     원본 방식 동일: 3가지 옵션 제공
-     ① 명함 이미지 저장 후 전송 (카톡·문자 권장)
-     ② 링크로 공유 (Web Share API)
-     ③ 링크 복사
--->
 <div class="modal-overlay" id="share-modal" onclick="closeShareModal(event)">
   <div class="modal" onclick="event.stopPropagation()">
     <div class="modal-grip"></div>
@@ -716,7 +963,7 @@
     <div class="modal-desc">카톡·문자에서 명함이 이미지로 보이게 하려면<br>'이미지로 저장 후 전송'을 추천드립니다.</div>
 
     <div class="modal-list">
-      <!-- ① 이미지 저장 후 공유: BYD-PMY-namecard.jpg fetch 후 Web Share -->
+      
       <button class="modal-item" onclick="shareImageDirect()">
         <div class="modal-item-icon" style="background:#FEE500;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="#1a1a1a">
@@ -729,7 +976,7 @@
         </div>
       </button>
 
-      <!-- ② 링크 공유: navigator.share API, 미지원 시 링크 복사로 폴백 -->
+      
       <button class="modal-item" onclick="shareViaSystem()">
         <div class="modal-item-icon" style="background:var(--accent-deep);">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -745,7 +992,7 @@
         </div>
       </button>
 
-      <!-- ③ 링크 복사 -->
+      
       <button class="modal-item" onclick="copyLink()">
         <div class="modal-item-icon" style="background:#e2e3e5;">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -767,64 +1014,28 @@
 
 <div class="toast" id="toast"></div>
 
-<!--
-╔══════════════════════════════════════════════════════════════╗
-  🟡  명함 정보 수정 구역  🟡
-  아래 <script> 안의 CONTACT_INFO 와 CARD_IMAGE_URL 을 수정하세요.
-  이름·직책·연락처·주소·이미지 URL 을 한 곳에서 관리합니다.
-╚══════════════════════════════════════════════════════════════╝
--->
-<!--NAMECARD-INFO-START▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼▼-->
 <script>
-/*
-╔══════════════════════════════════════════════════════════════╗
-║                                                              ║
-║   🟡🟡🟡  명함 정보 수정 구역  🟡🟡🟡                       ║
-║                                                              ║
-║   아래 CONTACT_INFO 값만 수정하면 전체 자동 반영됩니다.      ║
-║   ──────────────────────────────────────────────────         ║
-║   · firstName / lastName / fullName : 이름                   ║
-║   · title    : 직책                                          ║
-║   · company  : 회사명                                        ║
-║   · mobile   : 휴대폰 (하이픈 없이)                          ║
-║   · office   : 전시장 대표번호 (하이픈 없이)                 ║
-║   · email    : 이메일                                        ║
-║   · address  : 주소                                          ║
-║   · placeQuery : 지도 앱 검색어                              ║
-║                                                              ║
-║   CARD_IMAGE_URL : 명함 이미지 경로 (GitHub Raw URL)         ║
-║   CARD_IMAGE_FILENAME : 저장 시 파일명                       ║
-║                                                              ║
-╚══════════════════════════════════════════════════════════════╝
-*/
+
 const CONTACT_INFO = {
-  firstName:  '호준',           /* ★ 이름 */
-  lastName:   '최',             /* ★ 성 */
-  fullName:   '최호준',         /* ★ 표시 이름 */
-  title:      '과장',      /* ★ 직책 */
-  company:    'BYD 일산전시장', /* ★ 회사명 */
-  mobile:     '01090378699',    /* ★ 휴대폰 (하이픈 없이) */
-  office:     '0319110940',     /* ★ 전시장 대표번호 (하이픈 없이) */
-  email:      'hojun.choi@dtnetworks.co.kr', /* ★ 이메일 */
-  address:    '경기 고양시 일산동구 백마로 516',  /* ★ 주소 */
-  placeQuery: 'BYD Auto 일산전시장', /* ★ 지도 앱 검색어 */
+  firstName:  '호준',           
+  lastName:   '최',             
+  fullName:   '최호준',         
+  title:      '과장',      
+  company:    'BYD 일산전시장', 
+  mobile:     '01090378699',    
+  office:     '0319110940',     
+  email:      'hojun.choi@dtnetworks.co.kr', 
+  address:    '경기 고양시 일산동구 백마로 516',  
+  placeQuery: 'BYD Auto 일산전시장', 
   website:    window.location.href
 };
 
-/* ── 명함 이미지 URL / 파일명 ──
-   이미지 생성 없이 GitHub Raw 파일을 직접 사용합니다 */
 const CARD_IMAGE_URL      = 'https://raw.githubusercontent.com/jjuny80/BYDilsanHJ/main/BYD-CHJ-namecard.jpg';
 const CARD_IMAGE_FILENAME = '최호준_BYD명함.jpg';
 
-/* ── 공유 텍스트 ── */
 const SHARE_TITLE = `${CONTACT_INFO.fullName} | ${CONTACT_INFO.company}`;
 const SHARE_TEXT  = `${CONTACT_INFO.company} ${CONTACT_INFO.fullName} ${CONTACT_INFO.title} 명함`;
 
-/* ============================================================
-   이하 함수는 수정 불필요
-============================================================ */
-
-/* ── 토스트 메시지 표시 (2.2초 후 자동 소멸) ── */
 function showToast(msg) {
   const t = document.getElementById('toast');
   t.textContent = msg;
@@ -833,22 +1044,19 @@ function showToast(msg) {
   window.toastTimer = setTimeout(() => t.classList.remove('show'), 2200);
 }
 
-/* ── 연락처 저장 (vCard 3.0) ──
-   iOS Safari: Blob URL 다운로드 미지원 → data URI + window.open 방식
-   Android / Desktop: Blob + <a> 임시 클릭 방식 */
 function saveContact() {
-  // RFC 6350 준수: CRLF 줄바꿈, BOM 없음, UTF-8
+  
   const vcfText = [
     'BEGIN:VCARD',
     'VERSION:3.0',
-    'N:최;호준;;;',                                            // 성;이름;추가이름;경칭;접미사
+    'N:최;호준;;;',                                            
     'FN:최호준',
     'ORG:BYD Auto 일산전시장',
     'TITLE:과장',
-    'TEL;TYPE=CELL,VOICE:010-9037-8699',                   // 휴대폰
-    'TEL;TYPE=WORK,VOICE:031-932-9108',                    // 전시장 대표 번호
+    'TEL;TYPE=CELL,VOICE:010-9037-8699',                   
+    'TEL;TYPE=WORK,VOICE:031-932-9108',                    
     'EMAIL;TYPE=WORK,INTERNET:hojun.choi@dtnetworks.co.kr',
-    'ADR;TYPE=WORK:;;경기도 고양시 일산동구 백마로 516', // 사서함;확장;도로;도시;도/주;우편;국가
+    'ADR;TYPE=WORK:;;경기도 고양시 일산동구 백마로 516', 
     'URL;TYPE=WORK:' + CONTACT_INFO.website,
     'END:VCARD'
   ].join('\r\n') + '\r\n';
@@ -856,22 +1064,21 @@ function saveContact() {
   const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
 
   if (isIOS) {
-    // iOS: data URI → Safari가 연락처 앱 "추가" 팝업 자동 실행
+    
     window.open('data:text/vcard;charset=utf-8,' + encodeURIComponent(vcfText), '_blank');
   } else {
-    // Android / Desktop: Blob 객체 URL → <a download> 클릭 트릭
+    
     const url = URL.createObjectURL(new Blob([vcfText], { type: 'text/vcard;charset=utf-8' }));
     const a = Object.assign(document.createElement('a'), { href: url, download: '최호준_BYD.vcf' });
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
-    setTimeout(() => URL.revokeObjectURL(url), 1000); // 메모리 해제
+    setTimeout(() => URL.revokeObjectURL(url), 1000); 
   }
 
   showToast('연락처를 저장하세요 📇');
 }
 
-/* ── 현재 페이지 URL 클립보드 복사 ── */
 function copyLink() {
   closeShareModal();
   navigator.clipboard.writeText(window.location.href)
@@ -879,16 +1086,12 @@ function copyLink() {
     .catch(() => showToast('복사에 실패했습니다'));
 }
 
-/* ── 앱 딥링크 범용 헬퍼 ──
-   appUrl 을 먼저 시도하고, 1.2초 내 앱이 열리지 않으면 fallbackUrl 로 이동
-   pagehide 이벤트(앱 전환 성공 시 발생)로 타이머 취소 */
 function tryAppLink(appUrl, fallbackUrl) {
   const timer = setTimeout(() => { window.location.href = fallbackUrl; }, 1200);
   window.location.href = appUrl;
   window.addEventListener('pagehide', () => clearTimeout(timer), { once: true });
 }
 
-/* ── 지도 앱 연결 ── */
 function openTmap() {
   const q = encodeURIComponent(CONTACT_INFO.placeQuery);
   tryAppLink(`tmap://search?name=${q}`, 'https://surl.tmobiapi.com/d97deca3');
@@ -903,22 +1106,17 @@ function openNaverMap() {
   tryAppLink(`nmap://search?query=${q}&appname=dt.networks.card`, `https://map.naver.com/p/search/${q}`);
 }
 
-/* ── 공유 모달 열기 / 닫기 ── */
 function openShareModal() {
   document.getElementById('share-modal').classList.add('show');
 }
 
 function closeShareModal(e) {
-  /* 오버레이 클릭 또는 버튼 직접 호출 시 닫힘
-     modal 본체 클릭은 stopPropagation으로 차단되어 닫히지 않음 */
+  
   if (!e || e.target === e.currentTarget) {
     document.getElementById('share-modal').classList.remove('show');
   }
 }
 
-/* ── ① 이미지 저장 후 공유 (모달 옵션 1) ──
-   BYD-PMY-namecard.jpg 를 fetch → Blob → Web Share API 로 직접 전달
-   Web Share 미지원 또는 파일 공유 불가 환경 → 그냥 다운로드로 폴백 */
 function shareImageDirect() {
   closeShareModal();
   showToast('이미지를 준비 중입니다...');
@@ -931,27 +1129,25 @@ function shareImageDirect() {
     .then(blob => {
       const file = new File([blob], CARD_IMAGE_FILENAME, { type: 'image/jpeg' });
 
-      // Web Share API + 파일 공유 가능한 환경 (iOS Safari 15+, Android Chrome 등)
+      
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         return navigator.share({
           files: [file],
           title: SHARE_TITLE,
           text: SHARE_TEXT
-        }).catch(() => fallbackDownload(blob)); // 공유 취소 시 다운로드
+        }).catch(() => fallbackDownload(blob)); 
       } else {
-        // 파일 공유 미지원 → 다운로드로 폴백
+        
         fallbackDownload(blob);
       }
     })
     .catch(() => {
-      // 네트워크 오류 → 새 탭으로 열기
+      
       window.open(CARD_IMAGE_URL, '_blank');
       showToast('이미지를 새 탭에서 저장하세요');
     });
 }
 
-/* ── ② 링크 공유 (모달 옵션 2) ──
-   Web Share API로 URL 공유, 미지원 환경은 링크 복사로 폴백 */
 function shareViaSystem() {
   closeShareModal();
   if (navigator.share) {
@@ -959,7 +1155,7 @@ function shareViaSystem() {
       title: SHARE_TITLE,
       text: SHARE_TEXT,
       url: window.location.href
-    }).catch(() => {}); // 사용자 취소는 무시
+    }).catch(() => {}); 
   } else {
     navigator.clipboard.writeText(window.location.href)
       .then(() => showToast('링크가 복사되었습니다'))
@@ -967,7 +1163,6 @@ function shareViaSystem() {
   }
 }
 
-/* ── 명함 이미지 다운로드 (Blob → <a download>) ── */
 function fallbackDownload(blob) {
   const url = URL.createObjectURL(blob);
   const a = Object.assign(document.createElement('a'), {
@@ -981,8 +1176,6 @@ function fallbackDownload(blob) {
   showToast('명함 이미지가 저장되었습니다');
 }
 
-/* ── 명함 이미지로 저장 버튼 (하단 단독 버튼) ──
-   모달 경유 없이 바로 다운로드 */
 function downloadCardImage() {
   showToast('이미지를 준비 중입니다...');
   fetch(CARD_IMAGE_URL)
@@ -996,7 +1189,98 @@ function downloadCardImage() {
       showToast('이미지를 새 탭에서 저장하세요');
     });
 }
+
+let calcPeriod = 5;
+
+function toggleCalc() {
+  const panel = document.getElementById('calc-panel');
+  const arrow = document.getElementById('calc-arrow');
+  const btn   = document.getElementById('calc-toggle');
+  const open  = panel.style.display === 'none';
+  panel.style.display = open ? 'block' : 'none';
+  arrow.style.transform = open ? 'rotate(180deg)' : 'rotate(0deg)';
+  btn.style.borderRadius = open ? '16px 16px 0 0' : '16px';
+}
+
+function setPeriod(y) {
+  calcPeriod = y;
+  document.querySelectorAll('.period-btn').forEach(b => {
+    b.classList.toggle('active', parseInt(b.dataset.year) === y);
+  });
+}
+
+function fmtW(n) {
+  return Math.round(n).toLocaleString('ko-KR') + '원';
+}
+function fmtMan(n) {
+  const man = Math.round(n / 10000);
+  return '약 ' + man.toLocaleString('ko-KR') + '만원';
+}
+
+function carTax(cc) {
+  if (cc <= 1000) return cc * 80;
+  if (cc <= 1600) return cc * 140;
+  return cc * 200;
+}
+
+const BYD_MODELS = {
+  dolphin:       { efficiency: 5.5 },
+  dolphin_active:{ efficiency: 5.1 },
+  atto3:         { efficiency: 4.7 },
+  seal:          { efficiency: 4.7 },
+  seal_plus:     { efficiency: 4.7 },
+  seal_awd:      { efficiency: 4.2 },
+  sealion7:      { efficiency: 4.3 },
+};
+
+const EV_TAX_YEAR       = 130000;
+const EV_ENV_YEAR       = 0;
+const ICE_ENV_YEAR      = 90000;
+const EV_ACQ            = 1400000;
+const CHARGE_RATE       = 285;
+const ICE_PARTS_PER_10K = 200000;
+const EV_PARTS_YEAR     = 25000;
+
+function runCalc() {
+  const cc    = parseFloat(document.getElementById('c-cc').value)  || 0;
+  const mpg   = parseFloat(document.getElementById('c-mpg').value) || 0;
+  const fuelP = parseFloat(document.getElementById('c-fuel').value)|| 0;
+  const km    = parseFloat(document.getElementById('c-km').value)  || 0;
+  const model = document.getElementById('c-model').value;
+  const m     = BYD_MODELS[model];
+  const period = calcPeriod;
+
+  if (!cc || !mpg || !fuelP || !km) {
+    alert('모든 항목을 입력해 주세요.'); return;
+  }
+
+  const iceFuelYear  = (km / mpg) * fuelP;
+  const evFuelYear   = (km / m.efficiency) * CHARGE_RATE;
+  const iceTaxYear   = carTax(cc) + ICE_ENV_YEAR;
+  const evTaxYear    = EV_TAX_YEAR + EV_ENV_YEAR;
+  const icePartsYear = (km / 10000) * ICE_PARTS_PER_10K;
+  const evPartsYear  = EV_PARTS_YEAR;
+
+  const fuelSaving  = (iceFuelYear  - evFuelYear)  * period;
+  const taxSaving   = (iceTaxYear   - evTaxYear)   * period;
+  const partsSaving = (icePartsYear - evPartsYear) * period;
+  const acqSaving   = EV_ACQ;
+  const total       = fuelSaving + taxSaving + partsSaving + acqSaving;
+
+  document.getElementById('res-period').textContent  = period + '년 보유 시 총 절감 예상액';
+  document.getElementById('res-total').textContent   = fmtMan(total);
+  document.getElementById('r-ice-fuel').textContent  = fmtW(iceFuelYear);
+  document.getElementById('r-ev-fuel').textContent   = fmtW(evFuelYear);
+  document.getElementById('r-ice-tax').textContent   = fmtW(iceTaxYear);
+  document.getElementById('r-ev-tax').textContent    = fmtW(evTaxYear);
+  document.getElementById('r-ice-parts').textContent = fmtW(icePartsYear);
+  document.getElementById('r-ev-parts').textContent  = fmtW(evPartsYear);
+  document.getElementById('r-ev-acq').textContent    = '- ' + fmtW(EV_ACQ);
+
+  document.getElementById('calc-result').style.display = 'block';
+}
 </script>
 
 </body>
 </html>
+
